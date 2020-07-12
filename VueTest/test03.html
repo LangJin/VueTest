@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习VUE</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓：<input v-model="fisetname" />
+        名：<input v-model="lastname" />
+        姓名：<div>{{allname}}</div>
+        字数：<div>{{count}}</div>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                fisetname:"",
+                lastname:"",
+                count:0
+            },
+            computed:{
+                allname:function(){
+                    return this.fisetname + "" + this.lastname
+                }
+            },
+            watch:{
+                allname:function(){
+                    this.count ++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

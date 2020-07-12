@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习VUE</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        请输入：<input v-model="getvalue" />
+        <button @click="showlist">点击</button>
+        <ul>
+            <liitem v-for="(item,index) of xlist" :key="index" :content="item" :index="index" @delete="listdelete"></liitem>
+        </ul>
+        
+    </div>
+    <script>
+        Vue.component('liitem',{
+            props:['content','index'],
+            template:'<li @click="listdelete">{{content}}</li>',
+            methods:{
+                listdelete:function(){
+                    this.$emit('delete',this.index)
+                }
+            }
+        })
+
+        new Vue({
+            el:"#root",
+            data:{
+                getvalue:"",
+                xlist:[]
+            },
+            methods:{
+                showlist:function(){
+                    this.xlist.push(this.getvalue);
+                    this.getvalue = "";
+                },
+                listdelete:function(index){
+                    this.xlist.splice(index,1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

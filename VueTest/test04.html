@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习VUE</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-if="show">你猜我在不在</div>
+        <button @click="testshow">点击</button>
+        <ul>
+            <li v-for="(item,index) of xlist" :key="index">{{item}}</li>
+        </ul>
+        
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                show:true,
+                xlist:[1,2,3]
+            },
+            methods:{
+                testshow:function(){
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

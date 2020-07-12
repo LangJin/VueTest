@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习VUE</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        请输入：<input v-model="getvalue" />
+        <button @click="showlist">点击</button>
+        <ul>
+            <li v-for="(item,index) of xlist" :key="index">{{item}}</li>
+        </ul>
+        
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                getvalue:"",
+                xlist:[]
+            },
+            methods:{
+                showlist:function(){
+                    this.xlist.push(this.getvalue);
+                    this.getvalue = "";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

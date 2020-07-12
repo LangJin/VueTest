@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习VUE</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1 v-text="msg"></h1>
+        <h2 @click="getvalue">{{content}}</h2>
+        
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            // template:'<h1>{{msg}}</h1>',
+            data:{
+                msg:"你好，VUE",
+                content:"测试"
+            },
+            methods:{
+                getvalue:function(){
+                    this.content = "张三"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
